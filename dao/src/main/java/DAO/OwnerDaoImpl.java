@@ -27,6 +27,10 @@ public class OwnerDaoImpl implements OwnerDao {
 
     @Override
     public void deleteById(Long id) {
-
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.delete(session.get(Owner.class, id));
+        session.getTransaction().commit();
+        session.close();
     }
 }
