@@ -1,6 +1,6 @@
-package DAO;
+package org.example.DAO;
 
-import Entities.Owner;
+import org.example.Entities.Owner;
 
 import java.util.List;
 

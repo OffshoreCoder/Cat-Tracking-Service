@@ -1,15 +1,15 @@
-package DAO;
+package org.example.DAO;
 
-import Entities.Cat;
-import Entities.Owner;
+import org.example.Entities.Cat;
 
 import java.util.List;
+import java.util.Set;
 
 public interface CatDao {
     List findAll();
     Cat findById(Long id);
+    void update(Cat cat);
     void save(Cat cat);
     void deleteById(Long id);
-    List findCatsByOwner(Owner owner);
-    List findFriendsByCatId(Long id);
+    Set<Cat> findFriendsByCatId(Long id);
 }

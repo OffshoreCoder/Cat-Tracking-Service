@@ -1,4 +1,4 @@
-package Entities;
+package org.example.Entities;
 
 import lombok.Data;
 
@@ -22,9 +22,6 @@ public class Owner {
     @Column(name = "birth_date", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date birthDate;
-
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Cat> cats = new HashSet<>();
 
     public Owner() {
     }
