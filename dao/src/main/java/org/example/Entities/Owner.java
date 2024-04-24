@@ -2,19 +2,21 @@ package org.example.Entities;
 
 import lombok.Data;
 
-import javax.persistence.*;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.UUID;
+
+import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 
 @Data
 @Entity
 @Table(name = "Owners")
 public class Owner {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "owner_id")
-    private Long id;
+    private UUID id;
 
     @Column(name = "name", nullable = false)
     private String name;

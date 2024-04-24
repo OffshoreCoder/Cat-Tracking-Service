@@ -2,18 +2,22 @@ package org.example.Entities;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
+
 import java.util.Date;
 import java.util.Set;
+import java.util.UUID;
 
 @Data
 @Entity
 @Table(name = "Cats")
 public class Cat {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "cat_id")
-    private Long id;
+    private UUID id;
 
     @Column(name = "name")
     private String name;
