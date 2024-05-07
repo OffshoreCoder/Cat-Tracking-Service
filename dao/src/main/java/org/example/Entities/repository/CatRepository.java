@@ -1,5 +1,6 @@
-package org.example.Entities;
+package org.example.Entities.repository;
 
+import org.example.Entities.models.Cat;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -12,7 +12,7 @@
 
         <property name="hibernate.hbm2ddl.auto">update</property>
 
-<!--        &lt;!&ndash; Здесь могут быть объявления ваших сущностей &ndash;&gt;-->
+<!--        &lt;!&ndash;&ndash;&gt;-->
 <!--        <mapping class="src/main/java/Entities/Cat.java"/>-->
 <!--        <mapping class="путь.к.вашей.сущности.Owner"/>-->
     </session-factory>

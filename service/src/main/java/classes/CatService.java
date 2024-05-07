@@ -1,7 +1,7 @@
-package Classes;
+package classes;
 
-import org.example.Entities.Cat;
-import org.example.Entities.CatRepository;
+import org.example.Entities.models.Cat;
+import org.example.Entities.repository.CatRepository;
 import org.example.Entities.dto.CatDto;
 import org.example.Entities.dto.CatPageResponse;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
-package Classes;
+package classes;
 
-import org.example.Entities.Owner;
+import org.example.Entities.models.Owner;
 import org.example.Entities.dto.OwnerPageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +21,7 @@ public class OwnerController {
 
         Owner owner = ownerService.getOwnerByName(name);
         ownerService.deleteOwner(owner);
-        return new ResponseEntity<>("Owner was deleted successfully", HttpStatus.OK);
+        return new ResponseEntity<>("Successful", HttpStatus.OK);
     }
 
     @GetMapping("details/{name}")

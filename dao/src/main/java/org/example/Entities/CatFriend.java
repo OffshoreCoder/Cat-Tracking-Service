@@ -13,7 +13,6 @@ public class CatFriend {
     @Column(name = "friend_id")
     private Long friendId;
 
-
     public CatFriend() {}
 
     public CatFriend(Long catId, Long friendId) {

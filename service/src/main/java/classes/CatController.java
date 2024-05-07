@@ -1,7 +1,7 @@
-package Classes;
+package classes;
 
-import org.example.Entities.Cat;
-import org.example.Entities.Owner;
+import org.example.Entities.models.Cat;
+import org.example.Entities.models.Owner;
 import org.example.Entities.dto.CatDto;
 import org.example.Entities.dto.CatPageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +42,7 @@ public class CatController {
     ){
 
         catService.addOrUpdateCatWithDtoById(catDto, catId);
-        return new ResponseEntity<>("Cat was updated successfully", HttpStatus.OK);
+        return new ResponseEntity<>("Success", HttpStatus.OK);
     }
 
     @DeleteMapping("delete/{name}/{catId}")
@@ -51,7 +51,7 @@ public class CatController {
     ){
         Cat cat = catService.getCatById(catId);
         catService.deleteCat(cat);
-        return new ResponseEntity<>("Cat was updated successfully", HttpStatus.OK);
+        return new ResponseEntity<>("Success", HttpStatus.OK);
     }
 
     @GetMapping("details/{name}/{catId}")

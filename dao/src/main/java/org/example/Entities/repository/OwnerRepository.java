@@ -1,6 +1,6 @@
-package org.example.Entities;
+package org.example.Entities.repository;
 
-import org.example.Entities.Owner;
+import org.example.Entities.models.Owner;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

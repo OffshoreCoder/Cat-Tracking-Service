@@ -1,7 +1,7 @@
-package Classes;
+package classes;
 
-import org.example.Entities.Owner;
-import org.example.Entities.OwnerRepository;
+import org.example.Entities.models.Owner;
+import org.example.Entities.repository.OwnerRepository;
 import org.example.Entities.dto.OwnerDto;
 import org.example.Entities.dto.OwnerPageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
