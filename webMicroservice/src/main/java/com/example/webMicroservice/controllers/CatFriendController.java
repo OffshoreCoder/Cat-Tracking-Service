@@ -5,6 +5,7 @@ import com.example.webMicroservice.services.CatFriendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,18 +23,21 @@ public class CatFriendController {
     }
 
     @GetMapping("/friends/{catId}")
+    @PreAuthorize("hasRole('ADMIN') or @securityService.isOwner(authentication, #catId)")
     public ResponseEntity<List<CatFriend>> getFriendsOfCat(@PathVariable UUID catId) {
         List<CatFriend> friends = catFriendService.getFriendsOfCat(catId);
         return new ResponseEntity<>(friends, HttpStatus.OK);
     }
 
     @PostMapping("/add")
+    @PreAuthorize("hasRole('ADMIN') or @securityService.isOwner(authentication, #catFriend.cat.catId)")
     public ResponseEntity<String> addCatFriend(@RequestBody CatFriend catFriend) {
         catFriendService.addCatFriend(catFriend);
         return new ResponseEntity<>("Friend added successfully", HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ADMIN') or @securityService.isOwner(authentication, #id)")
     public ResponseEntity<String> deleteCatFriend(@PathVariable UUID id) {
         catFriendService.deleteCatFriend(id);
         return new ResponseEntity<>("Friend deleted successfully", HttpStatus.OK);

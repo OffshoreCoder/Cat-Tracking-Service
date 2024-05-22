@@ -41,8 +41,8 @@ public class OwnerService {
         ownerRepository.delete(owner);
     }
 
-    public Owner getOwnerById(UUID ownerId) {
-        return ownerRepository.findById(ownerId).orElseThrow(() -> new RuntimeException("Owner with current id does not exist"));
+    public Owner getOwnerById(UUID id) {
+        return ownerRepository.findById(id).orElse(null);
     }
 
     public Owner getOwnerByName(String name) {

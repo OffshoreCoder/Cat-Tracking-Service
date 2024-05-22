@@ -7,6 +7,7 @@ import com.example.webMicroservice.services.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class OwnerController {
     }
 
     @DeleteMapping("delete/{id}")
+    @PreAuthorize("hasRole('ADMIN') or @securityService.hasAccessToOwner(#id, authentication)")
     public ResponseEntity<String> deleteOwner(@PathVariable("id") UUID id) {
         Owner owner = ownerService.getOwnerById(id);
         ownerService.deleteOwner(owner);
@@ -30,11 +32,13 @@ public class OwnerController {
     }
 
     @GetMapping("details/{id}")
+    @PreAuthorize("hasRole('ADMIN') or @securityService.hasAccessToOwner(#id, authentication)")
     public ResponseEntity<Owner> getOwnerDetails(@PathVariable("id") UUID id) {
         return new ResponseEntity<>(ownerService.getOwnerById(id), HttpStatus.OK);
     }
 
     @GetMapping("all")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<OwnerPageResponse> getAllUsersDetails(
             @RequestParam(value = "pageNumber", defaultValue = "0", required = false) int pageNumber,
             @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize
@@ -43,6 +47,7 @@ public class OwnerController {
     }
 
     @GetMapping("/{ownerId}/cats")
+    @PreAuthorize("hasRole('ADMIN') or @securityService.hasAccessToOwner(#ownerId, authentication)")
     public ResponseEntity<List<CatDto>> getCatsByOwnerId(@PathVariable("ownerId") UUID ownerId) {
         List<CatDto> cats = ownerService.getCatsByOwnerId(ownerId);
         return ResponseEntity.ok(cats);
